@@ -1,12 +1,6 @@
 import streamlit as st
 
-
-st.set_page_config(
-    page_title="PIT-NE Jobs",
-    page_icon="PIT-NE logo.png",   
-    layout="wide"
-)
-
+st.set_page_config(page_title="PIT-NE Jobs", page_icon="PIT-NE logo.png", layout="wide")
 
 st.markdown(
     """
@@ -18,6 +12,9 @@ st.markdown(
         background-color: #f5f8fc;
         padding: 1rem 2rem;
         border-bottom: 1px solid #e1e4e8;
+        position: sticky;
+        top: 0;
+        z-index: 100;
     }
     .nav-left {
         display: flex;
@@ -44,16 +41,14 @@ st.markdown(
     }
     </style>
 
-    <!-- Top structure-->
     <div class="nav-container">
         <div class="nav-left">
-            <!-- ✅ Use logo  -->
             <img src="PIT-NE logo.png" alt="PIT-NE Logo">
             <div class="nav-title">PIT-NE Jobs</div>
         </div>
         <div class="nav-right">
             <a href="#home">Home</a>
-            <a href="#about">About Us</a>
+            <a href="https://your-about-page-link" target="_blank">About Us</a>
             <a href="https://multiverse-w9fva7qcna2joe224ixqbe.streamlit.app/" target="_blank">Explore Jobs</a>
         </div>
     </div>
@@ -61,7 +56,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-
+# ========== Hero Section（主标题部分） ==========
 st.markdown("<a name='home'></a>", unsafe_allow_html=True)
 
 col1, col2 = st.columns([2, 1])
@@ -75,48 +70,55 @@ with col1:
         "[🔎 Explore Jobs](https://multiverse-w9fva7qcna2joe224ixqbe.streamlit.app/)",
         unsafe_allow_html=True,
     )
-
-    st.markdown("### Explore by Field")
-    st.markdown(
-        """
-        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-            <a href="#" style="background:#dce6f7;padding:0.5rem 1rem;border-radius:8px;">STEM</a>
-            <a href="#" style="background:#dce6f7;padding:0.5rem 1rem;border-radius:8px;">Humanities</a>
-            <a href="#" style="background:#dce6f7;padding:0.5rem 1rem;border-radius:8px;">Policy</a>
-            <a href="#" style="background:#dce6f7;padding:0.5rem 1rem;border-radius:8px;">Design</a>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
 with col2:
     st.image("PIT-NE logo.png", use_container_width=True)
 
 st.markdown("---")
 
+st.markdown(
+    """
+    <style>
+    .section-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 5rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+    }
+    .card {
+        text-align: center;
+        width: 260px;
+    }
+    .card img {
+        height: 90px;
+        margin-bottom: 1rem;
+    }
+    .card h3 {
+        color: #1b3b75;
+        margin-bottom: 0.5rem;
+    }
+    .card p {
+        color: #333333;
+        font-size: 0.95rem;
+    }
+    </style>
 
-st.markdown("<a name='about'></a>", unsafe_allow_html=True)
-st.header("About Us")
-st.write(
-    """
-    **PIT-NE (Public Interest Technology – New England)** is a regional network connecting
-    people and organizations using technology to serve the public good.
-
-    We believe technology should **advance equity, justice, and inclusion** —
-    not just efficiency. Our mission is to help students, educators, and
-    professionals find meaningful paths in public-interest-oriented tech careers.
-    """
-)
-
-st.subheader("Our Vision")
-st.write(
-    """
-    - Empower individuals to use technology for social good  
-    - Build partnerships between academia, government, and nonprofits  
-    - Create resources that make public-interest tech accessible to all  
-    """
+    <div class="section-container">
+        <div class="card">
+            <img src="career_logo.png" alt="Careers">
+            <h3>Careers</h3>
+            <p>We connect people with opportunities to build technology for public good.</p>
+        </div>
+        <div class="card">
+            <img src="Purpose_logo.png" alt="Purpose">
+            <h3>Purpose</h3>
+            <p>Our mission is to inspire and empower ethical technology for everyone.</p>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
 
 st.markdown("---")
-
-
 st.caption("© 2025 PIT-NE — Public Interest Technology Network Explorer")
