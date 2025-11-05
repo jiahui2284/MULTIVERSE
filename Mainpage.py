@@ -51,7 +51,6 @@ st.markdown(
 
     <div class="nav-container">
         <div class="nav-left">
-            <!--  -->
             <img src="data:image/png;base64,{logo_base64}" alt="PIT-NE Logo">
             <div class="nav-title">PIT-NE Jobs</div>
         </div>
@@ -104,6 +103,69 @@ with col2:
         "PIT-NE was founded with a simple mission: to inspire and empower people to design, "
         "develop, and apply technology that serves humanity — ensuring progress aligns with values."
     )
+
+# ======== The Latest Section ========
+st.markdown(
+    """
+    <hr style="border: 5px solid #0078d7; margin-top: 3rem; margin-bottom: 1rem;">
+    <h2 style="font-size: 2.2rem; font-weight: 700;">The Latest</h2>
+    """,
+    unsafe_allow_html=True,
+)
+
+col1, col2 = st.columns([2, 1])
+with col1:
+    st.markdown("""
+    ### New Voices Shaping the Narrative of Technology for the Public Interest  
+    Emerging leaders in technology are offering diverse perspectives to reshape how society understands the public impact of innovation.  
+    Through the Public Voices Fellowship on Technology in the Public Interest, participants receive mentoring and guidance to strengthen their leadership and storytelling.  
+    This initiative, supported by the MacArthur Foundation and The OpEd Project, highlights how inclusive voices can shape technology for social good.  
+    [Read more →](https://www.macfound.org/press/grantee-news/new-voices-shaping-narrative-of-technology-for-the-public-interest)
+    """)
+with col2:
+    st.image("macfound.png", use_container_width=True)
+
+st.markdown("---")
+
+col1, col2 = st.columns([2, 1])
+with col1:
+    st.markdown("""
+    ### PiTech Fellows in Action: Building Accessible Tech Together  
+    At Cornell Tech, the Public Interest Technology (PiTech) Fellowship empowers Ph.D. students to co-create technology alongside communities, not just for them.  
+    Fellow Tobias Weinberg’s collaboration with YAI led to new designs in assistive communication that better reflect humor, timing, and human connection.  
+    Their work highlights how inclusive partnerships between researchers and nonprofits can transform accessibility into empathy-driven innovation.  
+    [Read more →](https://tech.cornell.edu/news/pitech-fellows-yai-tobias-weinberg/)
+    """)
+with col2:
+    st.image("techcornell.png", use_container_width=True)
+
+st.markdown("---")
+
+col1, col2 = st.columns([2, 1])
+with col1:
+    st.markdown("""
+    ### Tech Talks: The Role of Public Interest Technologist in Policy Making  
+    The Center for Democracy and Technology’s *Tech Talks* podcast explores how public interest technologists influence digital policy.  
+    Experts discuss how their technical expertise shapes decisions on privacy, cybersecurity, and AI governance while keeping human rights at the forefront.  
+    The episode highlights why bridging technology and policy is crucial to ensuring innovation serves democracy and the public good.  
+    [Read more →](https://cdt.org/insights/tech-talks-the-role-of-public-interest-technologist-in-policy-making/)
+    """)
+with col2:
+    st.image("cdt.png", use_container_width=True)
+
+st.markdown("---")
+
+col1, col2 = st.columns([2, 1])
+with col1:
+    st.markdown("""
+    ### How Public Interest Technology Is Taking Root on Our Campuses  
+    New America’s Public Interest Technology (PIT) initiative is cultivating the next generation of technologists who center equity and ethics in their work.  
+    Universities across the United States are embedding PIT into curricula, fostering partnerships between students, governments, and nonprofits.  
+    This growing movement ensures technology education equips future leaders to serve communities and strengthen democracy.  
+    [Read more →](https://www.newamerica.org/pit/blog/how-public-interest-technology-is-taking-root-on-our-campuses/)
+    """)
+with col2:
+    st.image("napit.png", use_container_width=True)
 
 st.markdown("---")
 st.caption("© 2025 PIT-NE — Public Interest Technology Network Explorer")
