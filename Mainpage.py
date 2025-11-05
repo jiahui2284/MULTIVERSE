@@ -69,7 +69,7 @@ st.markdown(
         </div>
         <div class="nav-right">
             <a href="#home">Home</a>
-            <a href="https://your-about-page-link" target="_blank">About Us</a>
+            <a href="https://multiverse-fnzxuryfjyfezrv523ypq5.streamlit.app/" target="_blank">About Us</a>
             <a href="https://multiverse-w9fva7qcna2joe224ixqbe.streamlit.app/" target="_blank">Explore Jobs</a>
         </div>
     </div>
