@@ -1,18 +1,28 @@
 import streamlit as st
 import base64
+import os
 
-# ======== ========
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, "rb") as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
+# ======== Helper Function ========
+def image_to_base64(path):
+    """Convert image file to base64 string safely."""
+    if not os.path.exists(path):
+        return ""
+    with open(path, "rb") as f:
+        return base64.b64encode(f.read()).decode()
 
-logo_base64 = get_base64_of_bin_file("PIT-NE logo.png")
+# ======== Load Images ========
+logo_base64 = image_to_base64("PIT-NE logo.png")
+career_base64 = image_to_base64("career_logo.png")
+purpose_base64 = image_to_base64("Purpose_logo.png")
+macfound_base64 = image_to_base64("macfound.png")
+techcornell_base64 = image_to_base64("techcornell.png")
+cdt_base64 = image_to_base64("cdt.png")
+napit_base64 = image_to_base64("napit.png")
 
-# ========  ========
+# ======== Streamlit Config ========
 st.set_page_config(page_title="PIT-NE Jobs", page_icon="PIT-NE logo.png", layout="wide")
 
-# ========  ========
+# ======== Navigation Bar ========
 st.markdown(
     f"""
     <style>
@@ -81,7 +91,8 @@ with col1:
         unsafe_allow_html=True,
     )
 with col2:
-    st.image("PIT-NE logo.png", use_container_width=True)
+    if logo_base64:
+        st.image(f"data:image/png;base64,{logo_base64}", use_container_width=True)
 
 st.markdown("---")
 
@@ -91,7 +102,8 @@ st.markdown("## 🌟 Our Focus Areas")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.image("career_logo.png", width=120)
+    if career_base64:
+        st.image(f"data:image/png;base64,{career_base64}", width=120)
     st.subheader("Careers")
     st.write(
         "We connect people with meaningful opportunities to use technology for social good. "
@@ -100,7 +112,8 @@ with col1:
     )
 
 with col2:
-    st.image("Purpose_logo.png", width=120)
+    if purpose_base64:
+        st.image(f"data:image/png;base64,{purpose_base64}", width=120)
     st.subheader("Purpose")
     st.write(
         "PIT-NE was founded with a simple mission: to inspire and empower people to design, "
@@ -116,6 +129,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# --- News 1 ---
 col1, col2 = st.columns([2, 1])
 with col1:
     st.markdown("""
@@ -126,10 +140,12 @@ with col1:
     [Read more →](https://www.macfound.org/press/grantee-news/new-voices-shaping-narrative-of-technology-for-the-public-interest)
     """)
 with col2:
-    st.image("macfound.png", use_container_width=True)
+    if macfound_base64:
+        st.image(f"data:image/png;base64,{macfound_base64}", use_container_width=True)
 
 st.markdown("---")
 
+# --- News 2 ---
 col1, col2 = st.columns([2, 1])
 with col1:
     st.markdown("""
@@ -140,10 +156,12 @@ with col1:
     [Read more →](https://tech.cornell.edu/news/pitech-fellows-yai-tobias-weinberg/)
     """)
 with col2:
-    st.image("techcornell.png", use_container_width=True)
+    if techcornell_base64:
+        st.image(f"data:image/png;base64,{techcornell_base64}", use_container_width=True)
 
 st.markdown("---")
 
+# --- News 3 ---
 col1, col2 = st.columns([2, 1])
 with col1:
     st.markdown("""
@@ -154,10 +172,12 @@ with col1:
     [Read more →](https://cdt.org/insights/tech-talks-the-role-of-public-interest-technologist-in-policy-making/)
     """)
 with col2:
-    st.image("cdt.png", use_container_width=True)
+    if cdt_base64:
+        st.image(f"data:image/png;base64,{cdt_base64}", use_container_width=True)
 
 st.markdown("---")
 
+# --- News 4 ---
 col1, col2 = st.columns([2, 1])
 with col1:
     st.markdown("""
@@ -168,7 +188,8 @@ with col1:
     [Read more →](https://www.newamerica.org/pit/blog/how-public-interest-technology-is-taking-root-on-our-campuses/)
     """)
 with col2:
-    st.image("napit.png", use_container_width=True)
+    if napit_base64:
+        st.image(f"data:image/png;base64,{napit_base64}", use_container_width=True)
 
 st.markdown("---")
 st.caption("© 2025 PIT-NE — Public Interest Technology Network Explorer")
