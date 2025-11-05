@@ -84,7 +84,7 @@ if selected_domains:
 
 # ======================
 # ======================
-results_per_page = 20
+results_per_page = 10
 total_results = len(filtered_df)
 total_pages = max((total_results - 1) // results_per_page + 1, 1)
 page = st.sidebar.number_input("Page", 1, total_pages, 1)
