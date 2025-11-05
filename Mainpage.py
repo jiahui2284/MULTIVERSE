@@ -56,7 +56,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ========== Hero Section（主标题部分） ==========
+# ========== Hero Section ==========
 st.markdown("<a name='home'></a>", unsafe_allow_html=True)
 
 col1, col2 = st.columns([2, 1])
@@ -75,50 +75,20 @@ with col2:
 
 st.markdown("---")
 
-st.markdown(
-    """
-    <style>
-    .section-container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 5rem;
-        margin-top: 2rem;
-        flex-wrap: wrap;
-    }
-    .card {
-        text-align: center;
-        width: 260px;
-    }
-    .card img {
-        height: 90px;
-        margin-bottom: 1rem;
-    }
-    .card h3 {
-        color: #1b3b75;
-        margin-bottom: 0.5rem;
-    }
-    .card p {
-        color: #333333;
-        font-size: 0.95rem;
-    }
-    </style>
+# ========== Careers & Purpose Section ==========
+st.markdown("## 🌟 Our Focus Areas")
 
-    <div class="section-container">
-        <div class="card">
-            <img src="career_logo.png" alt="Careers">
-            <h3>Careers</h3>
-            <p>We connect people with opportunities to build technology for public good.</p>
-        </div>
-        <div class="card">
-            <img src="Purpose_logo.png" alt="Purpose">
-            <h3>Purpose</h3>
-            <p>Our mission is to inspire and empower ethical technology for everyone.</p>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
+col1, col2 = st.columns(2)
+
+with col1:
+    st.image("career_logo.png", width=120)
+    st.subheader("Careers")
+    st.write("We connect people with opportunities to build technology for public good.")
+
+with col2:
+    st.image("Purpose_logo.png", width=120)
+    st.subheader("Purpose")
+    st.write("Our mission is to inspire and empower ethical technology for everyone.")
 
 st.markdown("---")
 st.caption("© 2025 PIT-NE — Public Interest Technology Network Explorer")
