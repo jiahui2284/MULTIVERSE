@@ -1,15 +1,25 @@
 import streamlit as st
 import base64
 
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, "rb") as f:
+# =========  =========
+def img_to_base64(img_path):
+    with open(img_path, "rb") as f:
         data = f.read()
     return base64.b64encode(data).decode()
 
-logo_base64 = get_base64_of_bin_file("PIT-NE logo.png")
+# =========  =========
+logo_b64 = img_to_base64("PIT-NE logo.png")
+career_b64 = img_to_base64("career_logo.png")
+purpose_b64 = img_to_base64("Purpose_logo.png")
+macfound_b64 = img_to_base64("macfound.png")
+techcornell_b64 = img_to_base64("techcornell.png")
+cdt_b64 = img_to_base64("cdt.png")
+napit_b64 = img_to_base64("napit.png")
 
+# =========  =========
 st.set_page_config(page_title="PIT-NE Jobs", page_icon="PIT-NE logo.png", layout="wide")
 
+# =========  =========
 st.markdown(
     f"""
     <style>
@@ -51,7 +61,7 @@ st.markdown(
 
     <div class="nav-container">
         <div class="nav-left">
-            <img src="data:image/png;base64,{logo_base64}" alt="PIT-NE Logo">
+            <img src="data:image/png;base64,{logo_b64}" alt="PIT-NE Logo">
             <div class="nav-title">PIT-NE Jobs</div>
         </div>
         <div class="nav-right">
@@ -64,7 +74,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ======== Hero Section ========
+# ========= Hero Section =========
 st.markdown("<a name='home'></a>", unsafe_allow_html=True)
 col1, col2 = st.columns([2, 1])
 with col1:
@@ -78,17 +88,17 @@ with col1:
         unsafe_allow_html=True,
     )
 with col2:
-    st.image("PIT-NE logo.png", use_container_width=True)
+    st.markdown(f'<img src="data:image/png;base64,{logo_b64}" style="width:100%;">', unsafe_allow_html=True)
 
 st.markdown("---")
 
-# ======== Careers & Purpose Section ========
+# ========= Careers & Purpose Section =========
 st.markdown("## 🌟 Our Focus Areas")
 
 col1, col2 = st.columns(2)
 
 with col1:
-    st.image("career_logo.png", width=120)
+    st.markdown(f'<img src="data:image/png;base64,{career_b64}" width="120">', unsafe_allow_html=True)
     st.subheader("Careers")
     st.write(
         "We connect people with meaningful opportunities to use technology for social good. "
@@ -97,14 +107,14 @@ with col1:
     )
 
 with col2:
-    st.image("Purpose_logo.png", width=120)
+    st.markdown(f'<img src="data:image/png;base64,{purpose_b64}" width="120">', unsafe_allow_html=True)
     st.subheader("Purpose")
     st.write(
         "PIT-NE was founded with a simple mission: to inspire and empower people to design, "
         "develop, and apply technology that serves humanity — ensuring progress aligns with values."
     )
 
-# ======== The Latest Section ========
+# ========= The Latest Section =========
 st.markdown(
     """
     <hr style="border: 5px solid #0078d7; margin-top: 3rem; margin-bottom: 1rem;">
@@ -113,6 +123,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# ---  ---
 col1, col2 = st.columns([2, 1])
 with col1:
     st.markdown("""
@@ -123,10 +134,11 @@ with col1:
     [Read more →](https://www.macfound.org/press/grantee-news/new-voices-shaping-narrative-of-technology-for-the-public-interest)
     """)
 with col2:
-    st.image("macfound.png", use_container_width=True)
+    st.markdown(f'<img src="data:image/png;base64,{macfound_b64}" style="width:100%; border-radius:10px;">', unsafe_allow_html=True)
 
 st.markdown("---")
 
+# ---  ---
 col1, col2 = st.columns([2, 1])
 with col1:
     st.markdown("""
@@ -137,10 +149,11 @@ with col1:
     [Read more →](https://tech.cornell.edu/news/pitech-fellows-yai-tobias-weinberg/)
     """)
 with col2:
-    st.image("techcornell.png", use_container_width=True)
+    st.markdown(f'<img src="data:image/png;base64,{techcornell_b64}" style="width:100%; border-radius:10px;">', unsafe_allow_html=True)
 
 st.markdown("---")
 
+# ---  ---
 col1, col2 = st.columns([2, 1])
 with col1:
     st.markdown("""
@@ -151,10 +164,11 @@ with col1:
     [Read more →](https://cdt.org/insights/tech-talks-the-role-of-public-interest-technologist-in-policy-making/)
     """)
 with col2:
-    st.image("cdt.png", use_container_width=True)
+    st.markdown(f'<img src="data:image/png;base64,{cdt_b64}" style="width:100%; border-radius:10px;">', unsafe_allow_html=True)
 
 st.markdown("---")
 
+# --- 
 col1, col2 = st.columns([2, 1])
 with col1:
     st.markdown("""
@@ -165,7 +179,7 @@ with col1:
     [Read more →](https://www.newamerica.org/pit/blog/how-public-interest-technology-is-taking-root-on-our-campuses/)
     """)
 with col2:
-    st.image("napit.png", use_container_width=True)
+    st.markdown(f'<img src="data:image/png;base64,{napit_b64}" style="width:100%; border-radius:10px;">', unsafe_allow_html=True)
 
 st.markdown("---")
 st.caption("© 2025 PIT-NE — Public Interest Technology Network Explorer")
