@@ -44,7 +44,7 @@ st.set_page_config(
 )
 
 # ======================
-# ===== Navigation Bar (统一主站风格) =====
+# ===== Navigation Bar =====
 st.markdown(
     f"""
     <style>
@@ -124,11 +124,26 @@ selected_work = st.sidebar.multiselect("Work Type", work_options)
 employer_options = sorted(df["Employer Type Label"].dropna().unique().tolist())
 selected_employer = st.sidebar.multiselect("Employer Type", employer_options)
 
+# ===== Seniority Filter =====
+if "Seniority" in df.columns:
+    seniority_options = [
+        "Entry",
+        "Mid",
+        "Senior IC",
+        "Senior Manager",
+        "Director",
+        "Executive",
+        "Unknown"
+    ]
+    selected_seniority = st.sidebar.multiselect("Seniority Level", seniority_options)
+else:
+    selected_seniority = []
+# Domain columns
 base_cols = [
     "job_title", "company", "location", "job_link",
     "has_keyword", "Work Type", "Employer Type",
     "job_title_lower", "company_lower",
-    "Work Type Label", "Employer Type Label"
+    "Work Type Label", "Employer Type Label", "Seniority"
 ]
 domain_cols = [c for c in df.columns if c not in base_cols]
 
@@ -155,6 +170,9 @@ if selected_domains:
     mask = (filtered_df[selected_domains] == "yes").any(axis=1)
     filtered_df = filtered_df[mask]
 
+if selected_seniority:
+    filtered_df = filtered_df[filtered_df["Seniority"].isin(selected_seniority)]
+
 # ======================
 # ===== Pagination =====
 results_per_page = 10
@@ -173,7 +191,9 @@ st.markdown(f"### Showing {len(page_df)} of {total_results} job results")
 for _, row in page_df.iterrows():
     st.markdown("---")
     st.subheader(row["job_title"])
-    col1, col2, col3, col4 = st.columns([2, 2, 2, 1])
+
+    col1, col2, col3, col4, col5 = st.columns([2, 2, 2, 2, 2])
+
     with col1:
         st.write(f"🏢 **Employer:** {row['company']}")
     with col2:
@@ -182,6 +202,9 @@ for _, row in page_df.iterrows():
         st.write(f"💼 **Work Type:** {row['Work Type Label']}")
     with col4:
         st.write(f"🏢 **Employer Type:** {row['Employer Type Label']}")
+    with col5:
+        st.write(f"📊 **Seniority:** {row.get('Seniority', 'Unknown')}")
+
     st.markdown(f"[🟢 Apply Here]({row['job_link']})", unsafe_allow_html=True)
 
 st.markdown("---")
