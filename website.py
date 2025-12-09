@@ -208,4 +208,4 @@ for _, row in page_df.iterrows():
     st.markdown(f"[🟢 Apply Here]({row['job_link']})", unsafe_allow_html=True)
 
 st.markdown("---")
-st.caption("© 2025 PIT-NE — Public Interest Technology Network Explorer")
+st.caption("© 2025 PIT-NE — Public Interest Technology New England.")
