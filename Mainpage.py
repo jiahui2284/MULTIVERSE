@@ -163,6 +163,15 @@ The episode highlights why bridging technology and policy is crucial to ensuring
 st.markdown("---")
 
 # --- News 4 ---
-st.mark
+st.markdown("""
+### How Public Interest Technology Is Taking Root on Our Campuses  
+New America’s Public Interest Technology (PIT) initiative is cultivating the next generation of technologists who center equity and ethics in their work.  
+Universities across the United States are embedding PIT into curricula, fostering partnerships between students, governments, and nonprofits.  
+This growing movement ensures technology education equips future leaders to serve communities and strengthen democracy.  
+[Read more →](https://www.newamerica.org/pit/blog/how-public-interest-technology-is-taking-root-on-our-campuses/)
+""")
+
+st.markdown("---")
+st.caption("© 2025 PIT-NE — Public Interest Technology Network Explorer")
 
 
