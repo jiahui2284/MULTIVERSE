@@ -13,7 +13,7 @@ def image_to_base64(path):
 logo_base64 = image_to_base64("PIT-NE logo.png")
 friendly_base64 = image_to_base64("Friendly.png")
 circle_base64 = image_to_base64("fcbf0318-09e8-479c-b95d-598f59234631.png")
-Second_logo_base64 = image_to_base64("PITLogo.png")
+
 
 # ========= Page Config =========
 st.set_page_config(
@@ -157,9 +157,10 @@ with col1:
     using technology not for domination, but for **democratic empowerment and equity**.
     """)
 with col2:
-    if logo_base64:
-        st.image(f"data:image/png;base64,{Second_logo_base64}", use_container_width=True)
+    # ❌ No image shown here — image removed as requested
+    pass
 
 st.markdown("---")
 st.caption("© 2025 PIT-NE — Public Interest Technology Network Explorer")
+
 
