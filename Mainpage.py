@@ -69,7 +69,7 @@ st.markdown(
         </div>
         <div class="nav-right">
             <a href="#home">Home</a>
-            <a href="https://multiverse-fnzxuryfjyfezrv523ypq5.streamlit.app/" target="_blank">About Us</a>
+            <a href="https://multiverse-fnzxuryfjyfezrv523ypq5.streamlit.app/" target="_blank">About</a>
             <a href="https://multiverse-w9fva7qcna2joe224ixqbe.streamlit.app/" target="_blank">Explore Jobs</a>
         </div>
     </div>
@@ -173,5 +173,6 @@ This growing movement ensures technology education equips future leaders to serv
 
 st.markdown("---")
 st.caption("© 2025 PIT-NE — Public Interest Technology Network Explorer")
+
 
 
