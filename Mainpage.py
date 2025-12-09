@@ -172,7 +172,8 @@ This growing movement ensures technology education equips future leaders to serv
 """)
 
 st.markdown("---")
-st.caption("© 2025 PIT-NE — Public Interest Technology Network Explorer")
+st.caption("© 2025 PIT-NE — Public Interest Technology New England.")
+
 
 
 
