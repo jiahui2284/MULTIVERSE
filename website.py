@@ -21,14 +21,17 @@ def load_data():
     df = pd.read_csv("checked52.csv")
     df.columns = [c.strip() for c in df.columns]
 
+    # Fill missing core fields
     for col in ["job_title", "company", "location", "job_link"]:
         if col in df.columns:
             df[col] = df[col].fillna("N/A")
 
+    # Lowercase helper columns for search
     df["job_title_lower"] = df["job_title"].str.lower()
     df["company_lower"] = df["company"].str.lower()
 
-    df["Work Type Label"] = df["Work Type"]
+    # Label columns (rename Work Type -> Location Type)
+    df["Location Type Label"] = df["Work Type"]
     df["Employer Type Label"] = df["Employer Type"]
 
     return df
@@ -39,7 +42,7 @@ df = load_data()
 # ===== Page Config =====
 st.set_page_config(
     page_title="PIT-NE Job Explorer",
-    page_icon="PIT-NE logo.png", 
+    page_icon="PIT-NE logo.png",
     layout="wide"
 )
 
@@ -116,15 +119,18 @@ st.markdown(
 # ===== Sidebar Filters =====
 st.sidebar.header("🔎 Filter Jobs")
 
+# Keyword search
 search_text = st.sidebar.text_input("Search jobs by keyword:")
 
-work_options = sorted(df["Work Type Label"].dropna().unique().tolist())
-selected_work = st.sidebar.multiselect("Work Type", work_options)
+# Location Type filter (was Work Type)
+location_options = sorted(df["Location Type Label"].dropna().unique().tolist())
+selected_location = st.sidebar.multiselect("Location Type", location_options)
 
+# Employer Type filter
 employer_options = sorted(df["Employer Type Label"].dropna().unique().tolist())
 selected_employer = st.sidebar.multiselect("Employer Type", employer_options)
 
-# ===== Seniority Filter =====
+# Seniority Filter
 if "Seniority" in df.columns:
     seniority_options = [
         "Entry",
@@ -138,12 +144,13 @@ if "Seniority" in df.columns:
     selected_seniority = st.sidebar.multiselect("Seniority Level", seniority_options)
 else:
     selected_seniority = []
+
 # Domain columns
 base_cols = [
     "job_title", "company", "location", "job_link",
     "has_keyword", "Work Type", "Employer Type",
     "job_title_lower", "company_lower",
-    "Work Type Label", "Employer Type Label", "Seniority"
+    "Location Type Label", "Employer Type Label", "Seniority"
 ]
 domain_cols = [c for c in df.columns if c not in base_cols]
 
@@ -153,6 +160,7 @@ selected_domains = st.sidebar.multiselect("Job Domain", domain_cols)
 # ===== Data Filter =====
 filtered_df = df.copy()
 
+# Text search
 if search_text:
     s = search_text.lower()
     filtered_df = filtered_df[
@@ -160,16 +168,20 @@ if search_text:
         | filtered_df["company_lower"].str.contains(s, na=False)
     ]
 
-if selected_work:
-    filtered_df = filtered_df[filtered_df["Work Type Label"].isin(selected_work)]
+# Location Type filter
+if selected_location:
+    filtered_df = filtered_df[filtered_df["Location Type Label"].isin(selected_location)]
 
+# Employer Type filter
 if selected_employer:
     filtered_df = filtered_df[filtered_df["Employer Type Label"].isin(selected_employer)]
 
+# Domain filter
 if selected_domains:
     mask = (filtered_df[selected_domains] == "yes").any(axis=1)
     filtered_df = filtered_df[mask]
 
+# Seniority filter
 if selected_seniority:
     filtered_df = filtered_df[filtered_df["Seniority"].isin(selected_seniority)]
 
@@ -199,9 +211,9 @@ for _, row in page_df.iterrows():
     with col2:
         st.write(f"📍 **Location:** {row.get('location', 'N/A')}")
     with col3:
-        st.write(f"💼 **Work Type:** {row['Work Type Label']}")
+        st.write(f"📍 **Location Type:** {row.get('Location Type Label', 'N/A')}")
     with col4:
-        st.write(f"🏢 **Employer Type:** {row['Employer Type Label']}")
+        st.write(f"🏢 **Employer Type:** {row.get('Employer Type Label', 'N/A')}")
     with col5:
         st.write(f"📊 **Seniority:** {row.get('Seniority', 'Unknown')}")
 
