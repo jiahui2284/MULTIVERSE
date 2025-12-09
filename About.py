@@ -242,8 +242,8 @@ Our scripts:
 - Add structured fields such as:  
   - **Location Type**  
   - **Employer Type**  
-  - **Seniority**  
-  - **Domain-related tags**  
+  - **Seniority Level**  
+  - **Jod domain**  
 
 This method provides a transparent and adaptable way to surface jobs that align with public-interest values.
 """)
@@ -303,3 +303,4 @@ with col2:
 
 st.markdown("---")
 st.caption("© 2025 PIT-NE — Public Interest Technology New England.")
+
