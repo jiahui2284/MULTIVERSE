@@ -104,7 +104,7 @@ st.markdown(
         </div>
         <div class="nav-right">
             <a href="https://multiverse-fsbeuhmjvnyfbdzyhbaemt.streamlit.app/" target="_blank">🏠 Home</a>
-            <a href="https://multiverse-fnzxuryfjyfezrv523ypq5.streamlit.app/" target="_blank">About Us</a>
+            <a href="https://multiverse-fnzxuryfjyfezrv523ypq5.streamlit.app/" target="_blank">About</a>
             <a class="active" href="#" target="_self">Explore Jobs</a>
         </div>
     </div>
