@@ -77,7 +77,7 @@ st.markdown(
         </div>
         <div class="nav-right">
             <a href="https://multiverse-fsbeuhmjvnyfbdzyhbaemt.streamlit.app/" target="_blank">🏠 Home</a>
-            <a class="active" href="#" target="_self">About Us</a>
+            <a class="active" href="#" target="_self">About</a>
             <a href="https://multiverse-w9fva7qcna2joe224ixqbe.streamlit.app/" target="_blank">Explore Jobs</a>
         </div>
     </div>
@@ -162,5 +162,6 @@ with col2:
 
 st.markdown("---")
 st.caption("© 2025 PIT-NE — Public Interest Technology Network Explorer")
+
 
 
